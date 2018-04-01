@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
+    public static function name(){
+       $user = static::find(auth()->id());
+       $nomeUsuario = $user->name;
+       
+       return $nomeUsuario;
+    }
 }

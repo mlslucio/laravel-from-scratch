@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    @yield('content');
+    <h5>Welcome! {{$user->name}}</h5>
 </body>
 </html>

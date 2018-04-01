@@ -11,8 +11,15 @@
 |
 */
 
-Route::get('/','PostCOntrolsler@index');
+Route::middleware('auth')->group(function () {
+    Route::prefix('/posts')->group(function (){
+      Route::get('','PostController@index');
+      Route::get('/create','PostController@create');
+      Route::post('','PostController@store');
+      Route::get('/{id}','PostController@show');
+      Route::post('/{post}/comment', 'CommentController@addComment');
+    });
+});
 
-/*Route::get('/tasks', 'TaskController@index');
-
-Route::get('/task/{id}', 'TaskController@show'); */
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
