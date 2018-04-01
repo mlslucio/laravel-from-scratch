@@ -17,6 +17,11 @@
             <p>{{$comment->body}}</p>
             <hr>
         @endforeach
+
+        @foreach($post->tags as $tag)
+            <p>{{$tag->name}}</p>
+        @endforeach
+
    </div>
    <form action="/post/{{$post->id}}/comment" method="post">
         {{csrf_field()}}

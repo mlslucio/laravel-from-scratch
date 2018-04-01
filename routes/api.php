@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/create','PostController@create');
+    Route::post('','PostController@store');
+    Route::get('/{id}','PostController@show');
+    Route::post('/{post}/comment', 'CommentController@addComment');
+});

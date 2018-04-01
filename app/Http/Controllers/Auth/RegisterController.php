@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        \Mail::to($user)->send(new WelcomeAgain($user));
+       // \Mail::to($user)->send(new WelcomeAgain($user));
 
        redirect()->home();
     }
